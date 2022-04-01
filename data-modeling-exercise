@@ -1,0 +1,36 @@
+Medical Center table columns
+id (PK)
+name
+city
+patient capacity
+date opened
+
+Doctor table columns
+id (PK)
+name
+patient (FK)
+diagnosed disease (FK)
+years experience 
+
+Patient table columns
+id (PK)
+name
+doctor treated by (FK)
+diagnosed disease (FK)
+discharge date
+
+Diagnosed Diseases table columns
+id (PK)
+name
+doctor (FK)
+patient (FK)
+
+
+
+Outer space: eliminate duplication with a separate table for the orbits_around column, and represent them in the outer_space table as foreign keys. Create a separate table for moons, that would use the id number for planets from this outer_space table in a column to show which planet each orbit. Could use the id numbers for the moons in that table to plug into the moon column in this one?
+
+Air traffic: if the same table repeating dozens of times is intentional (and I don’t see what in the code is making that happen) obviously that would be eliminated. There’s not a lot of duplication with city names, though if the table were much bigger there likely would be and it might be smart to make a table with departure and destination locations and use the ID numbers from that in this main table. You could do the same with the airline names. 
+
+Music: is it necessary to have artist and producer names as dictionaries? I assume it’s because some of the songs have multiple listings in those columns, but it doesn’t look ideal. 
+
+
