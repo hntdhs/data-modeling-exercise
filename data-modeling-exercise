@@ -27,10 +27,66 @@ patient (FK)
 
 
 
-Outer space: eliminate duplication with a separate table for the orbits_around column, and represent them in the outer_space table as foreign keys. Create a separate table for moons, that would use the id number for planets from this outer_space table in a column to show which planet each orbit. Could use the id numbers for the moons in that table to plug into the moon column in this one?
+Craigslist
+Your schema should keep track of the following
+The region of the craigslist post (San Francisco, Atlanta, Seattle, etc)
+Users and preferred region
+Posts: contains title, text, the user who has posted, the location of the posting, the region of the posting Categories that each post belongs to
 
-Air traffic: if the same table repeating dozens of times is intentional (and I don’t see what in the code is making that happen) obviously that would be eliminated. There’s not a lot of duplication with city names, though if the table were much bigger there likely would be and it might be smart to make a table with departure and destination locations and use the ID numbers from that in this main table. You could do the same with the airline names. 
+tables: regions, users, posts
+Region table columns 
+id (PK)
+name
 
-Music: is it necessary to have artist and producer names as dictionaries? I assume it’s because some of the songs have multiple listings in those columns, but it doesn’t look ideal. 
+Users table columns
+id (PK)
+name
+preferred_region (FK)
+
+Categories table columns
+id (PK)
+name 
+
+Posts
+id (PK)
+user_id (FK)
+region_id (FK)
+category_id (FK)
+title
+text
 
 
+*Need to ask about region of posting and location of posting - seems like they generally would be the same but you might want separate columns because occasionally they might not be the same, but that could lead to a lot of duplication. Also, is it ok that there might be multiple category id's, thus violating the rule of only having one item per cell?  
+
+
+
+Soccer League 
+
+Teams table columns
+id (PK)
+name
+
+Players table columns 
+id (PK)
+name
+team (FK)
+
+Referees table columns
+id (PK)
+name
+
+Matches table columns
+id (PK)
+home_team (FK)
+away_team (FK)
+referees (FK)
+home_team_goals (FK)
+away_team_goals (FK)
+home_team_resulting_points 
+away_team_resulting_points 
+
+Standings table columns 
+id (PK)
+rank
+team_id (FK)
+points 
